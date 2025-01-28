@@ -133,7 +133,7 @@ def gooey_params(**kwargs) -> GooeyParams:
         'terminal_font_size': kwargs.get('terminal_font_size', None),
         'richtext_controls': kwargs.get('richtext_controls', False),
         'error_color': kwargs.get('error_color', '#ea7878'),
-        'use_dark_mode': use_dark_mode
+        'use_dark_mode': use_dark_mode,
         # TODO: remove. Only useful for testing
         'cli': kwargs.get('cli', sys.argv),
     })
