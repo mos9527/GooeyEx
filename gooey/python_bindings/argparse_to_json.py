@@ -5,7 +5,7 @@ import argparse
 import json
 import os
 import sys
-import wx
+from wx import SystemSettings
 from argparse import (
     _CountAction,
     _HelpAction,
@@ -63,7 +63,7 @@ class UnsupportedConfiguration(Exception):
 # TODO: merge the default foreground and bg colors from the
 # baseline build_spec
 def item_default():
-    use_dark_mode = wx.SystemSettings.GetAppearance().IsUsingDarkBackground()
+    use_dark_mode = SystemSettings.GetAppearance().IsUsingDarkBackground()
     return {
     'error_color': '#ea7878',
     'label_color': constants.COLOR_WHITE if use_dark_mode else constants.COLOR_BLACK,
@@ -269,7 +269,7 @@ def reapply_mutex_groups(mutex_groups, action_groups):
 
 
 def categorize2(groups, widget_dict, options):
-    use_dark_mode = wx.SystemSettings.GetAppearance().IsUsingDarkBackground()
+    use_dark_mode = SystemSettings.GetAppearance().IsUsingDarkBackground()
 
     constants.COLOR_WHITE if use_dark_mode else constants.COLOR_BLACK
 
