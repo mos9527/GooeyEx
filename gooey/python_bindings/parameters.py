@@ -3,7 +3,7 @@ import sys
 import textwrap
 
 import os
-import wx
+from wx import SystemSettings
 
 from typing import List
 
@@ -52,7 +52,7 @@ def gooey_params(**kwargs) -> GooeyParams:
     """
     Builds the full GooeyParams object from an arbitrary subset of supplied values
     """
-    use_dark_mode = wx.SystemSettings.GetAppearance().IsUsingDarkBackground()
+    use_dark_mode = SystemSettings.GetAppearance().IsUsingDarkBackground()
     default_text_color  = constants.COLOR_WHITE if use_dark_mode else constants.COLOR_BLACK
 
     return GooeyParams(**{  # type: ignore
