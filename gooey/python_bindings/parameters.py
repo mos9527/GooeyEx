@@ -3,6 +3,8 @@ import sys
 import textwrap
 
 import os
+import wx
+
 from typing import List
 
 from gooey.python_bindings.constants import Events

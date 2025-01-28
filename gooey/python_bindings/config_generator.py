@@ -1,13 +1,7 @@
-import os
 import sys
-import signal
 import warnings
-import textwrap
-import wx
 from gooey.python_bindings import argparse_to_json
 from gooey.gui.util.quoting import quote
-from gooey.python_bindings import constants
-from gooey.python_bindings import gooey_decorator
 from gooey.gui.util.functional import merge_dictionaries
 
 default_layout = {
