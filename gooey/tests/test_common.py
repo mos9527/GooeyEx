@@ -1,7 +1,7 @@
 import unittest
 from collections import namedtuple
 
-from tests.harness import instrumentGooey
+from gooey.tests.harness import instrumentGooey
 from gooey import GooeyParser
 from gooey.tests import *
 
@@ -45,8 +45,8 @@ class TestCommonProperties(unittest.TestCase):
             with self.subTest(widgetName):
                 for case in cases:
                     parser = self.makeParser(widget=widgetName, **case.inputs)
-                    with instrumentGooey(parser) as (app, gooeyApp):
-                        widget = gooeyApp.configs[0].reifiedWidgets[0]
+                    with instrumentGooey(parser) as (app, frame, gapp):
+                        widget = gapp.getActiveConfig().reifiedWidgets[0]
                         self.assertEqual(widget.getValue()['rawValue'], case.initialExpected)
 
 

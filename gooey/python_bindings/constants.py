@@ -1,3 +1,4 @@
+from collections import namedtuple
 
 SIDEBAR = 'SIDEBAR'
 TABBED = 'TABBED'
@@ -29,3 +30,13 @@ COLOR_GREY_70 = "#4A4B57"
 COLOR_GREY_80 = "#3A3A44"
 COLOR_GREY_90 = "#292A31"
 COLOR_GREY_100 = "#19191D"
+
+Events = namedtuple('Events', [
+    'VALIDATE_FORM', 'ON_SUCCESS', 'ON_ERROR'
+])('VALIDATE_FORM', 'ON_SUCCESS', 'ON_ERROR')
+
+# class Events:
+#     VALIDATE_FORM = 'VALIDATE_FORM'
+#     ON_SUCCESS = 'ON_SUCCESS'
+#     ON_ERROR = 'ON_ERROR'
+
