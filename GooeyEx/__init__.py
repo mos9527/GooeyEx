@@ -9,4 +9,4 @@ from GooeyEx.gui.components.options import options
 from GooeyEx.python_bindings import types
 
 types = types
-__version__ = "1.2.0-ALPHA"
+__version__ = "0.0.2"

@@ -36,9 +36,9 @@ from GooeyEx.python_bindings.types import PublicGooeyState
 from GooeyEx.python_bindings.types import Try
 from GooeyEx.util.functional import assoc
 from GooeyEx.gui.util.time import Timing
-from rewx import components as c  # type: ignore
-from rewx import wsx  # type: ignore
-from rewx.core import Component, Ref  # type: ignore
+from GooeyEx.rewx import components as c  # type: ignore
+from GooeyEx.rewx import wsx  # type: ignore
+from GooeyEx.rewx.core import Component, Ref  # type: ignore
 
 
 class RGooey(Component):

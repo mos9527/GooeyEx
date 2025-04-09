@@ -16,10 +16,10 @@ from GooeyEx.gui.pubsub import pub
 from GooeyEx.gui.state import present_time
 from GooeyEx.gui.three_to_four import Constants
 from GooeyEx.python_bindings import constants
-from rewx import components as c  # type: ignore
-from rewx import wsx, mount, update  # type: ignore
-from rewx.core import Component, Ref  # type: ignore
-from rewx.widgets import set_basic_props  # type: ignore
+from GooeyEx.rewx import components as c  # type: ignore
+from GooeyEx.rewx import wsx, mount, update  # type: ignore
+from GooeyEx.rewx.core import Component, Ref  # type: ignore
+from GooeyEx.rewx.widgets import set_basic_props  # type: ignore
 
 
 def attach_notifier(parent):
@@ -221,8 +221,6 @@ def SidebarControls(props):
                     "proportion": 1,
                     "background_color": props["bg_color"],
                 },
-                [VerticalSpacer, {"height": 15}],
-                [TitleText, {"label": props["label"]}],
                 [VerticalSpacer, {"height": 5}],
                 [
                     c.ListBox,

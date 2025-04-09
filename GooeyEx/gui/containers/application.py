@@ -4,6 +4,7 @@ Primary orchestration and control point for Gooey.
 
 import queue
 import sys
+import os
 import threading
 from contextlib import contextmanager
 from functools import wraps
@@ -18,7 +19,7 @@ import wx  # type: ignore
 
 from GooeyEx.gui.state import FullGooeyState
 from GooeyEx.python_bindings.types import PublicGooeyState
-from rewx.widgets import set_basic_props
+from GooeyEx.rewx.widgets import set_basic_props
 
 from GooeyEx.gui.components.mouse import notifyMouseEvent
 from GooeyEx.gui.state import (
@@ -30,11 +31,11 @@ from GooeyEx.gui.state import (
 )
 from GooeyEx.gui import state as s
 from GooeyEx.gui.three_to_four import Constants
-from rewx.core import Component, Ref, updatewx, patch
+from GooeyEx.rewx.core import Component, Ref, updatewx, patch
 from typing_extensions import TypedDict
 
-from rewx import wsx, render, create_element, mount, update
-from rewx import components as c
+from GooeyEx.rewx import wsx, render, create_element, mount, update
+from GooeyEx.rewx import components as c
 from wx.adv import TaskBarIcon  # type: ignore
 import signal
 
@@ -342,14 +343,16 @@ class GooeyApplication(wx.Frame):
         if self.buildSpec.get("fullscreen", True):
             self.ShowFullScreen(True)
         # Program Icon (Windows)
-        icon = wx.Icon(self.buildSpec["images"]["programIcon"], wx.BITMAP_TYPE_PNG)
-        self.SetIcon(icon)
-        if sys.platform != "win32":
-            # OSX needs to have its taskbar icon explicitly set
-            # bizarrely, wx requires the TaskBarIcon to be attached to the Frame
-            # as instance data (self.). Otherwise, it will not render correctly.
-            self.taskbarIcon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
-            self.taskbarIcon.SetIcon(icon)
+        if os.path.exists(self.buildSpec["images"]["programIcon"]):
+            icon = wx.Icon(self.buildSpec["images"]["programIcon"], wx.BITMAP_TYPE_PNG)
+            self.SetIcon(icon)
+            if sys.platform == "darwin":
+                # OSX needs to have its taskbar icon explicitly set
+                # bizarrely, wx requires the TaskBarIcon to be attached to the Frame
+                # as instance data (self.). Otherwise, it will not render correctly.
+                if not hasattr(self, "__taskbarIcon"):
+                    self.__taskbarIcon = TaskBarIcon(iconType=wx.adv.TBI_DOCK)
+                    self.__taskbarIcon.SetIcon(icon)
 
     def buildNavigation(self):
         """

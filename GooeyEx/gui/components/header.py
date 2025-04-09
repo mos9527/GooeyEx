@@ -5,8 +5,8 @@ Created on Dec 23, 2013
 """
 
 import wx  # type: ignore
-from rewx import wsx
-import rewx.components as c
+from GooeyEx.rewx import wsx
+import GooeyEx.rewx.components as c
 
 from GooeyEx.gui import imageutil, image_repository
 from GooeyEx.gui.util import wx_util

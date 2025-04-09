@@ -1,14 +1,24 @@
-import rewx.components as c  # type: ignore
+import GooeyEx.rewx.components as c  # type: ignore
 import wx  # type: ignore
 import wx.html2  # type: ignore
-from rewx import wsx, render  # type: ignore
+from GooeyEx.rewx import wsx, render  # type: ignore
 
 
 def _html_window(html):
     return wsx(
-        [c.Block, {'orient': wx.VERTICAL, 'flag': wx.EXPAND},
-         [c.HtmlWindow, {'style': wx.TE_READONLY, 'flag': wx.EXPAND | wx.ALL,
-                         'proportion': 1, 'value': html}]]
+        [
+            c.Block,
+            {"orient": wx.VERTICAL, "flag": wx.EXPAND},
+            [
+                c.HtmlWindow,
+                {
+                    "style": wx.TE_READONLY,
+                    "flag": wx.EXPAND | wx.ALL,
+                    "proportion": 1,
+                    "value": html,
+                },
+            ],
+        ]
     )
 
 
@@ -17,9 +27,10 @@ class HtmlDialog(wx.Dialog):
     A MessageDialog where the central contents are an HTML window
     customizable by the user.
     """
+
     def __init__(self, *args, **kwargs):
-        caption = kwargs.pop('caption', '')
-        html = kwargs.pop('html', '')
+        caption = kwargs.pop("caption", "")
+        html = kwargs.pop("html", "")
         super(HtmlDialog, self).__init__(None, *args, **kwargs)
 
         wx.InitAllImageHandlers()
@@ -35,6 +46,3 @@ class HtmlDialog(wx.Dialog):
         sizer.Add(btnSizer, 0, wx.ALL | wx.EXPAND, 9)
         self.SetSizer(sizer)
         self.Layout()
-
-
-
