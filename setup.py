@@ -25,9 +25,7 @@ setup(
     url="http://pypi.python.org/pypi/GooeyEx/",
     author="greats3an",
     author_email="greats3an@gmail.com",
-    description=(
-        "GooeyEx is a fork of Gooey, a Python library that turns command line programs into GUI applications."
-    ),
+    description=("GooeyEx is a fork of Gooey with (Ex)tended features and bugfixes."),
     license="MIT",
     python_requires=">=3.6",
     packages=find_packages(),
