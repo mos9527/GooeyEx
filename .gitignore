@@ -48,3 +48,4 @@ gooey/_tmp/
 
 venv*/
 
+.DS_Store

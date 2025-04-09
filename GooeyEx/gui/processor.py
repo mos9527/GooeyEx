@@ -152,6 +152,7 @@ class ProcessController(object):
                 pub.send_message(events.PROGRESS_UPDATE, progress=_progress)
                 if _progress is None or self.hide_progress_msg is False:
                     pub.send_message(events.CONSOLE_UPDATE, msg=line + "\n")
+        pub.send_message(events.EXECUTION_COMPLETE)
 
     def _extract_progress(self, text):
         """
