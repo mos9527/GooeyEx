@@ -1,7 +1,6 @@
 import sys
 from json import JSONDecodeError
 
-import six
 import wx  # type: ignore
 
 from GooeyEx import Events
@@ -83,7 +82,7 @@ class RGooey(Component):
             "flag": wx.EXPAND,
             "height": self.buildSpec["header_height"],
             "image_uri": state["image"],
-            "image_size": (six.MAXSIZE, self.buildSpec["header_height"] - 10),
+            "image_size": (sys.maxsize, self.buildSpec["header_height"] - 10),
         }
 
         self.fprops = lambda state: {
