@@ -4,6 +4,7 @@ Main runner entry point for Gooey.
 
 from typing import Any, Tuple
 
+import sys, ctypes
 import wx  # type: ignore
 
 # wx.html and wx.xml imports required here to make packaging with
@@ -18,7 +19,7 @@ from GooeyEx.gui import image_repository
 from GooeyEx.gui.application.application import RGooey
 from GooeyEx.gui.lang import i18n
 from GooeyEx.util.functional import merge
-from GooeyEx.rewx import render, create_element  # type: ignore
+from rewx import render, create_element  # type: ignore
 
 
 def run(build_spec):
@@ -36,6 +37,9 @@ def _build_app(build_spec, app) -> Tuple[Any, wx.Frame]:
     Note: this method is broken out with app as
     an argument to facilitate testing.
     """
+    # windows DPI awareness
+    if sys.platform == "win32":
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
     # use actual program name instead of script file name in macOS menu
     app.SetAppDisplayName(build_spec["program_name"])
 
