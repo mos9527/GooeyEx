@@ -19,7 +19,7 @@ from GooeyEx.gui import image_repository
 from GooeyEx.gui.application.application import RGooey
 from GooeyEx.gui.lang import i18n
 from GooeyEx.util.functional import merge
-from rewx import render, create_element  # type: ignore
+from GooeyEx.rewx import render, create_element  # type: ignore
 
 
 def run(build_spec):

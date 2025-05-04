@@ -2,19 +2,18 @@
 
 import glob
 from setuptools import setup, find_packages
-from GooeyEx import __version__
 
 with open("README.md") as readme:
     long_description = readme.read()
 
-version = __version__
+version = "0.1.0"  # Also in GooeyEx/__init__.py
 
 deps = [
     "Pillow>=4.3.0",
     "psutil>=5.4.2",
     "colored>=1.3.93",
     "pygtrie>=2.3.3",
-    "typing-extensions==3.10.0.2",
+    "typing-extensions>=3.10.0.2",
     "wxpython>=4.2.0",
     'dataclasses>=0.8; python_version < "3.7"',
 ]
